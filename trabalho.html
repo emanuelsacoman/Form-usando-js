@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Trabalho Form</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function Enviar(){
+            var nome = document.getElementById("name");
+            var telefone = document.getElementById("phone");
+            var email = document.getElementById("email");
+            var data = document.getElementById("date");
+            //
+            var d = new Date();
+            var ano = d.getFullYear();
+            var mes = d.getMonth() +1;
+            var dia = d.getDate();
+           //var anoUser = data.getFullYear();
+           //var anoCerto = +anoUser;
+            
+            if ((nome.value != "") && (telefone.value != "") && (email.value != "") && (data.value != "")) {
+                
+                alert('Obrigado sr(a) ' + nome.value + ' os seus dados foram encaminhados com sucesso!');
+                alert('Seus dados são: Telefone: ' + telefone.value + '; Email: ' + email.value + '; Data de nascimento: ' + data.value + '.');
+                alert(mes);
+            }
+            else {
+                alert('erro');
+            }
+        }
+    </script>
+
+    <div class="formulario">
+        <form name="meu_form">
+            <h1>Entre com os dados</h1>
+            <input type="text"     id="name"   placeholder="Nome" required="required">
+            <input type="text"     id="phone"  placeholder="Telefone" required="required">
+            <input type="text"     id="email"  placeholder="Email" required="required">
+            <input type="date"     id="date"   placeholder="Data Nascimento" required="required">
+            <input type="textarea">
+            <input type="submit" class="enviar" onclick="Enviar();" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
