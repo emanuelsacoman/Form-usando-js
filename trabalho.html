@@ -10,23 +10,34 @@
 <body>
     <script type="text/javascript">
         function Enviar(){
-            var nome = document.getElementById("name");
-            var telefone = document.getElementById("phone");
-            var email = document.getElementById("email");
-            var data = document.getElementById("date");
+            var nome = document.getElementById("name").value;
+            var telefone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+
+            var dia_aniversario = document.getElementById("dd").value;
+            var mes_aniversario = document.getElementById("mm").value;
+            var ano_aniversario = document.getElementById("aaaa").value;
             //
-            var d = new Date();
-            var ano = d.getFullYear();
-            var mes = d.getMonth() +1;
-            var dia = d.getDate();
-           //var anoUser = data.getFullYear();
-           //var anoCerto = +anoUser;
-            
-            if ((nome.value != "") && (telefone.value != "") && (email.value != "") && (data.value != "")) {
+            var d = new Date;
+                ano_atual = d.getFullYear();
+                mes_atual = d.getMonth() + 1;
+                dia_atual = d.getDate();
+            //
+                 ano_aniversario = +ano_aniversario;
+                 mes_aniversario = +mes_aniversario;
+                 dia_aniversario = +dia_aniversario;
+
+                var quantos_anos = ano_atual - ano_aniversario;
+
+                if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
+                    quantos_anos--;
+                }
+
+            if ((nome != "") && (telefone != "") && (email != "") && (dia_aniversario != "") && (mes_aniversario != "") && (ano_aniversario != "")) {
                 
-                alert('Obrigado sr(a) ' + nome.value + ' os seus dados foram encaminhados com sucesso!');
-                alert('Seus dados são: Telefone: ' + telefone.value + '; Email: ' + email.value + '; Data de nascimento: ' + data.value + '.');
-                alert(mes);
+                alert('Obrigado sr(a) ' + nome + ' os seus dados foram encaminhados com sucesso!');
+                alert('Seus dados são: Telefone: ' + telefone + '; Email: ' + email + '; Data de nascimento: ' + dia_aniversario + '/' + mes_aniversario + '/' + ano_aniversario + '.');
+                alert('Sua idade é: ' + quantos_anos + '.');
             }
             else {
                 alert('erro');
@@ -37,11 +48,15 @@
     <div class="formulario">
         <form name="meu_form">
             <h1>Entre com os dados</h1>
-            <input type="text"     id="name"   placeholder="Nome" required="required">
-            <input type="text"     id="phone"  placeholder="Telefone" required="required">
-            <input type="text"     id="email"  placeholder="Email" required="required">
-            <input type="date"     id="date"   placeholder="Data Nascimento" required="required">
-            <input type="textarea">
+            <input type="text"     id="name"   placeholder="Nome" required>
+            <input type="text"     id="phone"  placeholder="Telefone" required>
+            <input type="text"     id="email"  placeholder="Email" required>
+
+            <input type="text"     id="dd"   placeholder="dd" maxlength="2" required>
+            <input type="text"     id="mm"   placeholder="mm" maxlength="2" required>
+            <input type="text"     id="aaaa"   placeholder="aaaa" maxlength="4" required>
+
+            <input type="textarea" class="textarea">
             <input type="submit" class="enviar" onclick="Enviar();" value="Enviar">
         </form>
     </div>
